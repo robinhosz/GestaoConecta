@@ -131,17 +131,3 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'static')
 
 LOGIN_REDIRECT_URL='/aposlogin'
 
-#for contact us give your gmail id and password
-#EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = 
-#EMAIL_USE_TLS = 
-#EMAIL_USE_SSL = 
-#EMAIL_PORT = 465
-#EMAIL_HOST_USER =  # this email will be used to send emails
-#EMAIL_HOST_PASSWORD =  # host email password required
-# now sign in with your host gmail account in your browser
-# open following link and turn it ON
-# https://myaccount.google.com/lesssecureapps
-# otherwise you will get SMTPAuthenticationError at /contactus
-# this process is required because google blocks apps authentication by default
-#EMAIL_RECEIVING_USER = [] # email on which you will receive messages sent from website

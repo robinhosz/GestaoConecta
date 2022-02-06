@@ -89,3 +89,4 @@ class PacienteAltaDetalhes(models.Model):
     Outros=models.PositiveIntegerField(null=False)
     total=models.PositiveIntegerField(null=False)
 
+#mtv django

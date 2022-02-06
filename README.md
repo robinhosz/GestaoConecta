@@ -51,15 +51,15 @@ Projeto desenvolvido durante a **Cadeira de Engenharia de Software**
 ### Como executar o projeto
 - Abra o Terminal e execute os seguintes comandos:
 ```
-pip instalar django==3.0.5
-pip instalar django-widget-tweaks
-pip instalar xhtml2pdf
+pip install django==3.0.5
+pip install django-widget-tweaks
+pip install xhtml2pdf
 ```
 - Baixe esta pasta Zip do projeto e extraia-a
 - Mover para a pasta do projeto no Terminal. Em seguida, execute os seguintes comandos:
 ```
 py manage.py makemigrations
-py manage.py migrar
+py manage.py migrate
 py manage.py runserver
 ```
 - Agora digite o seguinte URL no seu navegador instalado no seu PC

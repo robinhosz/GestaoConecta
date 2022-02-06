@@ -1,0 +1,74 @@
+{% extends 'hospital/recepcionista_base.html' %}
+{% load static %}
+{% block content %}
+{%include 'hospital/recepcionista_dashboard_cards.html'%}
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-primary col-md-5" style="margin-left:2%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Doutores Recentes</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Departamento</th>
+            <th>Telefone</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        {% for d in doutores %}
+        <tr>
+          <td> {{d.get_name}}</td>
+          <td>{{d.departamento}}</td>
+          <td>{{d.telefone}}</td>
+          {%if d.status%}
+          <td> <span class="label label-primary">Permanente</span></td>
+          {% else %}
+          <td> <span class="label label-success">Em espera</span></td>
+          {% endif %}
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <div class="panel panel-primary col-md-5" style="margin-left:5%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Pacientes Recentes</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Sintomas</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        {% for p in pacientes %}
+        <tr>
+          <td> {{p.get_name}}</td>
+          <td>{{p.sintomas}}</td>
+          <td>{{p.telefone}}</td>
+          <td>{{p.endereco}}</td>
+          {%if p.status%}
+          <td> <span class="label label-primary">Adicionado</span></td>
+          {% else %}
+          <td> <span class="label label-success">Em Espera</span></td>
+          {% endif %}
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

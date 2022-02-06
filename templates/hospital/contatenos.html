@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Conecta Gestão</title>
+
+
+</head>
+
+<body>
+
+  {% include "hospital/navbar.html" %}
+  <br><br>
+
+  <center>
+    <h3 class='alert alert-success'>Envie-nos seu valioso feedback!</h3>
+
+    <form method="POST">
+      <!-- Token csrf -->
+      {% csrf_token %}
+      <div class="form-group">
+        <p>
+        <h3>{{ form.as_p }}</h3>
+        </p>
+        <br>
+        <input type="submit" value="Envie a mensagem" class='btn btn-primary btn-lg'>
+      </div>
+    </form>
+  </center>
+  {% include "hospital/footer.html" %}
+</body>
+
+
+</html>

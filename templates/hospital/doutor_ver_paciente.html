@@ -1,0 +1,70 @@
+{% extends 'hospital/doctor_base.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+
+
+<div class="container">
+
+    <form  action="/search" method="get" style="margin-left:70%;" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="query" id="query" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
+ 
+
+  {% if pacientes %}
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Sua lista total de pacientes</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Foto de Perfil</th>
+          <th>Sintomas</th>
+          <th>Telefone</th>
+          <th>Endereço</th>
+
+        </tr>
+      </thead>
+      {% for p in pacientes %}
+      <tr>
+        <td> {{p.get_name}}</td>
+        <td> <img src="{% static p.fotoperfil.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td>{{p.sintomas}}</td>
+        <td>{{p.telefone}}</td>
+        <td>{{p.endereco}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {%else%}
+  <br><br><br>
+  <h4 style="text-align: center;color: red;">Nenhum paciente encontrado!!! !!!</h4>
+  {% endif %}
+
+
+</div>
+
+{% endblock content %}

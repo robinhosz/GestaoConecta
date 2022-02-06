@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Conecta Gestão</title>
+  <style type="text/css">
+    body {
+      color: #aa082e;
+      background-color: #b6bde7;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #337AB7);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+  </style>
+
+</head>
+
+
+<body>
+  {% include "hospital/navbar.html" %}
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+
+
+  <!--- pagina cadastro doutor---------->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container register-form">
+      <div class="form">
+        <div class="note">
+          <p>Junte-se a Nós</p>
+        </div>
+
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                {% render_field userForm.first_name class="form-control" placeholder="Nome" %}
+              </div>
+              <div class="form-group">
+                {% render_field userForm.username class="form-control" placeholder="Nome de Usuário" %}
+              </div>
+              <div class="form-group">
+                {% render_field doutorForm.departamento class="form-control" placeholder="Departamento" %}
+              </div>
+              <div class="form-group">
+                {% render_field doutorForm.endereco class="form-control" placeholder="Endereço" %}
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                {% render_field userForm.last_name class="form-control" placeholder="Sobrenome" %}
+              </div>
+              <div class="form-group">
+                {% render_field userForm.password class="form-control" placeholder="Senha" %}
+              </div>
+              <div class="form-group">
+                {% render_field doutorForm.telefone class="form-control"  placeholder="Telefone" %}
+              </div>
+              <div class="form-group">
+                {% render_field doutorForm.fotoperfil required="required" class="form-control" placeholder="Escolher Arquivo" %}
+              </div>
+
+            </div>
+          </div>
+          <center><button type="submit" class="btnSubmit">Aplicar-se</button></center>
+          <br>
+          <div class="text-center">Já tem uma conta? <a href="doutorlogin">Entre aqui!</a></div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  {% include "hospital/footer.html" %}
+</body>
+
+
+</html>

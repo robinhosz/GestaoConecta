@@ -1,0 +1,57 @@
+{% extends 'hospital/recepcionista_base.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Paciente</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Foto de Perfil</th>
+          <th>Sintomas</th>
+          <th>Telefone</th>
+          <th>Endereço</th>
+          <th>Atualizar</th>
+          <th>Deletar</th>
+        </tr>
+      </thead>
+      {% for p in pacientes %}
+      <tr>
+        <td> {{p.get_name}}</td>
+        <td> <img src="{% static p.fotoperfil.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td>{{p.sintomas}}</td>
+        <td>{{p.telefone}}</td>
+        <td>{{p.endereco}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'atualizar-paciente-from' p.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'deletar-paciente-from' p.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock content %}

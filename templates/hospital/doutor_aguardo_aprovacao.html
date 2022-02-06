@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Conecta Gestão</title>
+
+
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+  </style>
+
+</head>
+
+<body>
+  {% include "hospital/navbar.html" %}
+  <br>
+  <br>
+
+  <div class="jumbotron" style="margin-top: 0px;
+    margin-bottom: 0px;">
+    <h1 class="display-4">Olá {{request.user.firs_name}}</h1>
+    <p class="lead">Sua conta não foi aprovada até agora <br><br>Nossa equipe está verificando seu perfil <br><br> Em breve sua conta será confirmada !!!</p>
+    <hr class="my-4">
+    <p>Verifique Mais Tarde</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/sair" role="button">Sair</a>
+    </p>
+  </div>
+
+  {% include "hospital/footer.html" %}
+</body>
+
+
+</html>

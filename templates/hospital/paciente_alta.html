@@ -1,0 +1,246 @@
+{% extends 'hospital/patient_base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <meta charset="utf-8">
+  <title>Conecta Gestão</title>
+
+  <style>
+    .invoice-box {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid #eee;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+      font-size: 16px;
+      line-height: 24px;
+      font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+      color: #555;
+    }
+
+    .invoice-box table {
+      width: 100%;
+      line-height: inherit;
+      text-align: left;
+    }
+
+    .invoice-box table td {
+      padding: 5px;
+      vertical-align: top;
+    }
+
+    .invoice-box table tr td:nth-child(2) {
+      text-align: right;
+    }
+
+    .invoice-box table tr.top table td {
+      padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.top table td.title {
+      font-size: 45px;
+      line-height: 45px;
+      color: #333;
+    }
+
+    .invoice-box table tr.information table td {
+      padding-bottom: 40px;
+    }
+
+    .invoice-box table tr.heading td {
+      background: #eee;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+    }
+
+    .invoice-box table tr.details td {
+      padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.item td {
+      border-bottom: 1px solid #eee;
+    }
+
+    .invoice-box table tr.item.last td {
+      border-bottom: none;
+    }
+
+    .invoice-box table tr.total td:nth-child(2) {
+      border-top: 2px solid #eee;
+      font-weight: bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .invoice-box table tr.top table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+
+      .invoice-box table tr.information table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    /** RTL **/
+    .rtl {
+      direction: rtl;
+      font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .rtl table {
+      text-align: right;
+    }
+
+    .rtl table tr td:nth-child(2) {
+      text-align: left;
+    }
+
+    .menu {
+      top: 50px;
+    }
+
+    .download {
+      text-align: center;
+      display: block;
+    }
+  </style>
+</head>
+
+<br><br><br>
+
+{%if esta_liberado%}
+<div class="invoice-box">
+  <table cellpadding="0" cellspacing="0">
+    <tr class="top">
+      <td colspan="2">
+        <table>
+          <tr>
+            <td class="title">
+              <h1>Conecta Gestão</h1>
+            </td>
+
+            <td>
+
+              Data de Entrada: {{admitirData}}<br>
+              Data de Saída: {{saidaData}}<br>
+              Dias Passados: {{diaPassado}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr class="information">
+      <td colspan="2">
+        <table>
+          <tr>
+            <td>
+              Nome do Paciente : {{pacienteNome}}<br>
+              Telefone do Paciente : {{telefone}}<br>
+              Endereço do Paciente : {{endereco}}<br>
+            </td>
+
+            <td>
+              Doutor(a) :<br>
+              {{assinadoDoutorNome}}<br>
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr class="heading">
+      <td>
+        Doenças e Sintomas
+      </td>
+      <td>
+
+      </td>
+
+    </tr>
+
+    <tr class="details">
+      <td>
+        {{sintomas}}
+      </td>
+    </tr>
+    <tr class="heading">
+      <td>
+        Lista
+      </td>
+
+      <td>
+        Preço
+      </td>
+    </tr>
+
+    <tr class="item">
+      <td>
+        Taxa de quarto de {{diaPassado}} Dias
+      </td>
+
+      <td>
+        {{custoQuarto}}
+      </td>
+    </tr>
+
+    <tr class="item">
+      <td>
+        Taxa do Doutor(a)
+      </td>
+
+      <td>
+        {{taxaDoutor}}
+      </td>
+    </tr>
+
+    <tr class="item">
+      <td>
+        Medicamentos
+      </td>
+
+      <td>
+        {{medicamentos}}
+      </td>
+    </tr>
+
+    <tr class="item last">
+      <td>
+        Outros
+      </td>
+
+      <td>
+        {{Outros}}
+      </td>
+    </tr>
+
+    <tr class="total">
+      <td></td>
+
+      <td>
+        Total : {{total}}
+      </td>
+    </tr>
+
+  </table>
+</div>
+<br><br>
+<div class="download">
+  <a style="background:red; width:500px;" href="{% url 'download-pdf' pacienteId  %}">Baixar</a>
+</div>
+
+
+
+{%else%}
+<h5 style="text-align:center;">Você não recebeu alta pelo hospital! !</h5>
+<h5 style="text-align:center;">Seu tratamento ainda está acontecendo! !</h5><br><br>
+<h6 style="text-align:center;">Quando você ter alta vai pode baixar a fatura</h6>
+{%endif%}
+
+<br><br><br><br><br><br><br><br>
+{% endblock content %}

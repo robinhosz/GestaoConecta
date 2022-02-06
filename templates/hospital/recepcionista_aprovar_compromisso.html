@@ -1,0 +1,56 @@
+{% extends 'hospital/recepcionista_base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Aprovação de Compromissos</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Nome do Doutor(a)</th>
+          <th>Nome do Paciente</th>
+          <th>Descrição</th>
+          <th>Data</th>
+          <th>Aprovar</th>
+          <th>Rejeitar</th>
+        </tr>
+      </thead>
+      {% for a in compromissos %}
+      <tr>
+        <td> {{a.doutorNome}}</td>
+        <td>{{a.pacienteNome}}</td>
+        <td>{{a.descricao}}</td>
+        <td>{{a.compromissoData}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'aprovar-compromisso-recep' a.id  %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'rejeitar-compromisso-recep' a.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+
+</div>
+
+
+{% endblock content %}

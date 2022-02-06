@@ -1,0 +1,58 @@
+{% extends 'hospital/doctor_base.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Sua lista de pacientes com alta</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+
+          <th>Data de liberação</th>
+          <th>Data de entrada</th>
+          <th>Sintomas</th>
+          <th>Telefone</th>
+          <th>Endereço</th>
+
+        </tr>
+      </thead>
+      {% for p in liberadopacientes %}
+      <tr>
+        <td> {{p.pacienteNome}}</td>
+        <td>{{p.admitirData}}</td>
+        <td>{{p.saidaData}}</td>
+        <td>{{p.sintomas}}</td>
+        <td>{{p.telefone}}</td>
+        <td>{{p.endereco}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+
+{% endblock content %}

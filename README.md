@@ -17,6 +17,11 @@
 
 Projeto desenvolvido durante a **Cadeira de Engenharia de Software** 
 
+<h1 align="center">
+<img src="https://user-images.githubusercontent.com/82779533/152699571-387dc0a8-c456-4620-99c7-993fe47cbaee.png" width="800px" />
+</h1>
+<br><br>
+
 ## ⚙️ Funcionalidades
 
 **ADMINISTRADOR**
